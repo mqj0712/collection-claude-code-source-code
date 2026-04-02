@@ -440,3 +440,63 @@ def _register_builtins() -> None:
 
 
 _register_builtins()
+
+
+# ── Memory tools ─────────────────────────────────────────────────────────
+
+from memory import save_memory, delete_memory, MemoryEntry
+from datetime import datetime as _dt
+
+
+def _memory_save(params, config):
+    entry = MemoryEntry(name=params["name"], description=params["description"],
+                        type=params["type"], content=params["content"],
+                        created=_dt.now().strftime("%Y-%m-%d"))
+    save_memory(entry)
+    return f"Memory saved: {entry.name}"
+
+
+def _memory_delete(params, config):
+    delete_memory(params["name"])
+    return f"Memory deleted: {params['name']}"
+
+
+register_tool(ToolDef(
+    name="MemorySave",
+    schema={
+        "name": "MemorySave",
+        "description": "Save a persistent memory entry (markdown file with frontmatter).",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "name":        {"type": "string", "description": "Human-readable name for the memory"},
+                "type":        {"type": "string", "description": "Category: user, feedback, project, or reference",
+                                "enum": ["user", "feedback", "project", "reference"]},
+                "description": {"type": "string", "description": "Short description of the memory"},
+                "content":     {"type": "string", "description": "Body text of the memory"},
+            },
+            "required": ["name", "type", "description", "content"],
+        },
+    },
+    func=_memory_save,
+    read_only=False,
+    concurrent_safe=True,
+))
+
+register_tool(ToolDef(
+    name="MemoryDelete",
+    schema={
+        "name": "MemoryDelete",
+        "description": "Delete a persistent memory entry by name.",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "name": {"type": "string", "description": "Name of the memory to delete"},
+            },
+            "required": ["name"],
+        },
+    },
+    func=_memory_delete,
+    read_only=False,
+    concurrent_safe=True,
+))

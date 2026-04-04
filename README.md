@@ -27,7 +27,7 @@
 ---
 
 ## 🔥🔥🔥 News (Pacific Time)
-- 04:00 PM, Apr 03, 2026: **v3.03** — Task management system (`task/` package): `TaskCreate` / `TaskUpdate` / `TaskGet` / `TaskList` tools with sequential IDs, dependency edges (blocks/blocked_by), metadata, persistence to `.nano_claude/tasks.json`, thread-safe store, `/tasks` REPL command, 37 new tests (**~9500** lines of Python).
+- 06:00 PM, Apr 03, 2026: **v3.03** — Task management system (`task/` package): `TaskCreate` / `TaskUpdate` / `TaskGet` / `TaskList` tools with sequential IDs, dependency edges (blocks/blocked_by), metadata, persistence to `.nano_claude/tasks.json`, thread-safe store, `/tasks` REPL command, 37 new tests (**~9500** lines of Python).
 - 02:50 PM, Apr 03, 2026: **v3.02** — Plugin system (`plugin/` package): install/uninstall/enable/disable/update via `/plugin` CLI, recommendation engine (keyword+tag matching), multi-scope (user/project), git-based marketplace. `AskUserQuestion` tool: interactive mid-task user prompts with numbered options and free-text input (**~8500** lines of Python).
 - 10:00 AM, Apr 03, 2026: **v3.01** — MCP (Model Context Protocol) support: `mcp/` package, stdio + SSE + HTTP transports, auto tool discovery, `/mcp` command, 34 new tests (**~7000** lines of Python).
 - 12:20 PM, Apr 02, 2026: **v3.0** — Multi-agent packages (`multi_agent/`), memory package (`memory/`), skill package (`skill/`) with built-in skills, argument substitution, fork/inline execution, AI memory search, git worktree isolation, agent type definitions (**~5000** lines of Python), see [update](https://github.com/SafeRL-Lab/nano-claude-code/blob/main/docs/update_readme_v3.0.md).
